@@ -5,13 +5,13 @@ fi
 if [ ! -d "./logs/LongForecasting" ]; then
     mkdir ./logs/LongForecasting
 fi
-seq_len=720
-model_name=DyPTST
+seq_len=336
+model_name=MoU
 
 root_path_name=./dataset/
-data_path_name=electricity.csv
-model_id_name=Electricity
-data_name=custom
+data_path_name=ETTm2.csv
+model_id_name=ETTm2
+data_name=ETTm2
 
 random_seed=2021
 for pred_len in 96 192 336 720
@@ -27,25 +27,25 @@ do
       --features S \
       --seq_len $seq_len \
       --pred_len $pred_len \
-      --enc_in 321 \
+      --enc_in 7 \
       --e_layers 1 \
       --n_heads 16 \
       --d_model 128 \
       --d_ff 256 \
-      --dropout 0.2\
+      --dropout 0.4\
       --fc_dropout 0.2\
-      --head_dropout 0\
+      --head_dropout 0.1\
       --patch_len 16\
       --stride 8\
       --des 'Exp' \
       --train_epochs 100\
-      --patience 10\
-      --lradj 'TST'\
-      --pct_start 0.2\
-      --gpu 0 \
-      --entype 'moe' \
+      --patience 20\
+      --pct_start 0.1 \
+      --gpu 1 \
+      --lradj 'TST' \
+      --entype 'mof' \
       --postype 'w' \
-      --ltencoder 'mam' \
-      --dps 0.1 0.1 0.0 0.1\
-      --itr 1 --batch_size 12 --learning_rate 0.0001 >logs/LongForecasting/univariate/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'moe.log 
+      --ltencoder 'mfca' \
+      --dps 0.4 0.2 0.0 0.4\
+      --itr 1 --batch_size 256 --learning_rate 0.00004 >logs/LongForecasting/univariate/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'moe.log 
 done

@@ -5,7 +5,7 @@ fi
 if [ ! -d "./logs/LongForecasting" ]; then
     mkdir ./logs/LongForecasting
 fi
-model_name=DyPTST
+model_name=MoU
 
 root_path_name=./dataset/
 data_path_name=national_illness.csv
@@ -41,9 +41,9 @@ do
       --train_epochs 100\
       --lradj 'constant'\
       --gpu 2 \
-      --entype 'moe' \
+      --entype 'mof' \
       --postype 'w' \
-      --ltencoder 'mam' \
+      --ltencoder 'mfca' \
       --dps 0.1 0.1 0.0 0.1 \
       --itr 1 --batch_size 32 --learning_rate 0.0015 >logs/LongForecasting/univariate/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'moe.log 
 done
@@ -75,9 +75,9 @@ do
       --train_epochs 100\
       --lradj 'constant'\
       --gpu 2 \
-      --entype 'moe' \
+      --entype 'mof' \
       --postype 'w' \
-      --ltencoder 'mam' \
+      --ltencoder 'mfca' \
       --dps 0.2 0.2 0.0 0.2 \
       --patience 10 \
       --itr 1 --batch_size 32 --learning_rate 0.0025 >logs/LongForecasting/univariate/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'moe.log 

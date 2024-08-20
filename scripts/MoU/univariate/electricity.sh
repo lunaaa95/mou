@@ -6,11 +6,11 @@ if [ ! -d "./logs/LongForecasting" ]; then
     mkdir ./logs/LongForecasting
 fi
 seq_len=720
-model_name=PatchTST
+model_name=MoU
 
 root_path_name=./dataset/
-data_path_name=traffic.csv
-model_id_name=traffic
+data_path_name=electricity.csv
+model_id_name=Electricity
 data_name=custom
 
 random_seed=2021
@@ -24,11 +24,11 @@ do
       --model_id $model_id_name_$seq_len'_'$pred_len \
       --model $model_name \
       --data $data_name \
-      --features M \
+      --features S \
       --seq_len $seq_len \
       --pred_len $pred_len \
-      --enc_in 862 \
-      --e_layers 3 \
+      --enc_in 321 \
+      --e_layers 1 \
       --n_heads 16 \
       --d_model 128 \
       --d_ff 256 \
@@ -42,5 +42,10 @@ do
       --patience 10\
       --lradj 'TST'\
       --pct_start 0.2\
-      --itr 1 --batch_size 24 --learning_rate 0.0001 >logs/LongForecasting/PatchTST/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
+      --gpu 0 \
+      --entype 'mof' \
+      --postype 'w' \
+      --ltencoder 'mfca' \
+      --dps 0.1 0.1 0.0 0.1\
+      --itr 1 --batch_size 12 --learning_rate 0.0001 >logs/LongForecasting/univariate/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'moe.log 
 done

@@ -6,7 +6,7 @@ if [ ! -d "./logs/LongForecasting" ]; then
     mkdir ./logs/LongForecasting
 fi
 seq_len=512
-model_name=DyPTST
+model_name=MoU
 
 root_path_name=./dataset/
 data_path_name=ETTm2.csv
@@ -17,9 +17,9 @@ random_seed=2021
 
 e_layers=1
 gpu=1
-entype=moe
+entype=mof
 
-for ltencoder in mam aa aaa
+for ltencoder in mfca
 do
     name=$ltencoder
     for pred_len in 96 192 336 720

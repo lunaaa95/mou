@@ -6,7 +6,7 @@ if [ ! -d "./logs/LongForecasting" ]; then
     mkdir ./logs/LongForecasting
 fi
 seq_len=336
-model_name=DyPTST
+model_name=MoU
 
 root_path_name=./dataset/
 data_path_name=ETTm1.csv
@@ -16,7 +16,7 @@ data_name=ETTm1
 random_seed=2021
 
 entype=dyconv
-ltencoder=mam
+ltencoder=mfca
 
 e_layers=1
 

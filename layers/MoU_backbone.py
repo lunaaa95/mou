@@ -1,4 +1,4 @@
-__all__ = ['DyPTST_backbone']
+__all__ = ['MoU_backbone']
 
 # Cell
 from typing import Callable, Optional
@@ -20,7 +20,7 @@ from zeta.nn import FeedForward
 
 
 # Cell
-class DyPTST_backbone(nn.Module):
+class MoU_backbone(nn.Module):
     def __init__(self, c_in:int, context_window:int, target_window:int, patch_len:int, stride:int, max_seq_len:Optional[int]=1024,
                  entype:str='se', postype:str='w', ltencoder:str='mamba',
                  K:int=6, conv_stride:int=8, conv_kernel_size:int=16,
@@ -50,7 +50,7 @@ class DyPTST_backbone(nn.Module):
         
         if entype == 'dyconv':
             hidden_dim = int((math.ceil((patch_len - conv_kernel_size) / conv_stride) + 1) * d_model)
-        elif entype in ['w','se', 'moe']:
+        elif entype in ['w','se', 'mof']:
             hidden_dim = d_model
 
         # Backbone 
@@ -570,7 +570,7 @@ class TSTiEncoder(nn.Module):  #i means channel-independent
 
         # self.moe = SwitchMoE(dim=patch_len, output_dim=d_model, mult=4, num_experts=4)
         # self.moe = SwitchMixtureOfExperts(input_dim=patch_len, hidden_dim=d_model * 2, expert_output_dim=d_model, num_experts=2, top_k=1)
-        self.moe = MoE(input_size=patch_len, output_size=d_model, num_experts=num_x, hidden_size=d_model, k=topk, noisy_gating=True)
+        self.mof = MoE(input_size=patch_len, output_size=d_model, num_experts=num_x, hidden_size=d_model, k=topk, noisy_gating=True)
 
         # Positional encoding
         self.W_pos = positional_encoding(pe, learn_pe, q_len, d_model)
@@ -594,7 +594,7 @@ class TSTiEncoder(nn.Module):  #i means channel-independent
         elif ltencoder == 'ama':
             self.encoder = Encoder_AMA(q_len, d_model, n_heads, d_k=d_k, d_v=d_v, d_ff=d_ff, norm=norm, attn_dropout=attn_dropout, dropout=dropout,
                                    pre_norm=pre_norm, activation=act, res_attention=res_attention, n_layers=n_layers, store_attn=store_attn, device=device)
-        elif ltencoder == 'mam':
+        elif ltencoder == 'mfca':
             self.encoder = Encoder_MFCA(q_len, d_model, n_heads, d_k=d_k, d_v=d_v, d_ff=d_ff, norm=norm, dps=dps, d_state=d_state, expand=expand,
                                    pre_norm=pre_norm, activation=act, res_attention=res_attention, n_layers=n_layers, store_attn=store_attn, device=device)
         elif ltencoder == 'mam_true':
@@ -637,10 +637,10 @@ class TSTiEncoder(nn.Module):  #i means channel-independent
             x = x.permute(0,2,1,3)                                                   # x: [bs x patch_len x nvars x patch_num]
             x = self.se1d(x)
             x = x.permute(0,2,3,1)                                                   # x: [bs x nvars x patch_num, patch_len]
-        elif self.entype == "moe":
+        elif self.entype == "mof":
             x = x.permute(0,1,3,2)
             x = x.reshape(bs * nvars, patch_num, patch_len)
-            x = self.moe(x)
+            x = self.mof(x)
             x = x.reshape(bs, nvars, patch_num, -1)
             
         u = torch.reshape(x, (x.shape[0]*x.shape[1],x.shape[2],x.shape[3]))      # u: [bs * nvars x patch_num x hidden_dim]

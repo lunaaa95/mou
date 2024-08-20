@@ -5,7 +5,7 @@ fi
 if [ ! -d "./logs/LongForecasting" ]; then
     mkdir ./logs/LongForecasting
 fi
-model_name=DyPTST
+model_name=MoU
 
 root_path_name=./dataset/
 data_path_name=electricity.csv

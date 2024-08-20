@@ -1,4 +1,4 @@
-__all__ = ['DyPTST']
+__all__ = ['MoU']
 
 # Cell
 from typing import Callable, Optional
@@ -8,7 +8,7 @@ from torch import Tensor
 import torch.nn.functional as F
 import numpy as np
 
-from layers.DyPTST_backbone import DyPTST_backbone
+from layers.MoU_backbone import MoU_backbone
 from layers.PatchTST_layers import series_decomp
 
 
@@ -67,7 +67,7 @@ class Model(nn.Module):
         self.decomposition = decomposition
         if self.decomposition:
             self.decomp_module = series_decomp(kernel_size)
-            self.model_trend = DyPTST_backbone(c_in=c_in, context_window = context_window, target_window=target_window, patch_len=patch_len, stride=stride, 
+            self.model_trend = MoU_backbone(c_in=c_in, context_window = context_window, target_window=target_window, patch_len=patch_len, stride=stride, 
                                   max_seq_len=max_seq_len, n_layers=n_layers, d_model=d_model,
                                   entype=entype, postype=postype, ltencoder=ltencoder,
                                   K=K, conv_stride=conv_stride, conv_kernel_size=conv_kernel_size,
@@ -79,7 +79,7 @@ class Model(nn.Module):
                                   pretrain_head=pretrain_head, head_type=head_type, individual=individual, revin=revin, affine=affine,
                                   subtract_last=subtract_last, verbose=verbose, 
                                   device=device, **kwargs)
-            self.model_res = DyPTST_backbone(c_in=c_in, context_window = context_window, target_window=target_window, patch_len=patch_len, stride=stride, 
+            self.model_res = MoU_backbone(c_in=c_in, context_window = context_window, target_window=target_window, patch_len=patch_len, stride=stride, 
                                   max_seq_len=max_seq_len, n_layers=n_layers, d_model=d_model,
                                   entype=entype, postype=postype, ltencoder=ltencoder,
                                   K=K, conv_stride=conv_stride, conv_kernel_size=conv_kernel_size,
@@ -92,7 +92,7 @@ class Model(nn.Module):
                                   subtract_last=subtract_last, verbose=verbose, 
                                   device=device, **kwargs)
         else:
-            self.model = DyPTST_backbone(c_in=c_in, context_window = context_window, target_window=target_window, patch_len=patch_len, stride=stride, 
+            self.model = MoU_backbone(c_in=c_in, context_window = context_window, target_window=target_window, patch_len=patch_len, stride=stride, 
                                   max_seq_len=max_seq_len, n_layers=n_layers, d_model=d_model,
                                   entype=entype, postype=postype, ltencoder=ltencoder,
                                   K=K, conv_stride=conv_stride, conv_kernel_size=conv_kernel_size,

@@ -5,15 +5,25 @@ fi
 if [ ! -d "./logs/LongForecasting" ]; then
     mkdir ./logs/LongForecasting
 fi
-seq_len=720
-model_name=DyPTST
+seq_len=336
+model_name=MoU
 
 root_path_name=./dataset/
-data_path_name=weather.csv
-model_id_name=weather
-data_name=custom
+data_path_name=ETTh2.csv
+model_id_name=ETTh2
+data_name=ETTh2
 
 random_seed=2021
+
+entype=mof
+ltencoder=mfca
+
+num_x=4
+topk=2
+
+e_layers=1
+
+# --patch_len 32\
 for pred_len in 96 192 336 720
 do
     python -u run_longExp.py \
@@ -24,26 +34,27 @@ do
       --model_id $model_id_name_$seq_len'_'$pred_len \
       --model $model_name \
       --data $data_name \
-      --features S \
+      --features M \
       --seq_len $seq_len \
       --pred_len $pred_len \
-      --enc_in 21 \
-      --e_layers 1 \
-      --n_heads 16 \
-      --d_model 128 \
-      --d_ff 256 \
+      --enc_in 7 \
+      --e_layers $e_layers \
+      --n_heads 4 \
+      --d_model 64 \
+      --d_ff 128 \
       --dropout 0.2\
       --fc_dropout 0.1\
       --head_dropout 0\
       --patch_len 16\
       --stride 8\
+      --entype $entype \
+      --ltencoder $ltencoder \
+      --dps 0.2 0.2 0.2 0.0 0.2 \
+      --num_x $num_x \
+      --topk $topk \
       --des 'Exp' \
+      --pct_start 0.2\
       --train_epochs 100\
-      --patience 20\
-      --gpu 2 \
-      --entype 'moe' \
-      --postype 'w' \
-      --ltencoder 'mam' \
-      --dps 0.1 0.1 0.0 0.1\
-      --itr 1 --batch_size 128 --learning_rate 0.00007 >logs/LongForecasting/univariate/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'moe.log 
+      --gpu 3 \
+      --itr 1 --batch_size 512 --learning_rate 0.0001 >logs/LongForecasting/$entype'+'$ltencoder/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'$entype'+'$ltencoder.log
 done
