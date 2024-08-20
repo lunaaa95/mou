@@ -18,10 +18,11 @@ random_seed=2021
 e_layers=1
 gpu=1
 entype=mof
+ltencoder=mfca
 
-for ltencoder in mfca
+for seq_len in 192 336 512 720
 do
-    name=$ltencoder
+    name=temp2
     for pred_len in 96 192 336 720
     do
         python -u run_longExp.py \
