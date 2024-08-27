@@ -45,7 +45,7 @@ do
       --ltencoder 'mfca' \
       --lradj 'TST' \
       --pct_start 0.2 \
-      --dps 0.1 0.1 0.0 0.1\
+      --dps 0.1 0.1 0.1 0.0 0.1\
       --itr 1 --batch_size 1024 --learning_rate 0.0001 >logs/LongForecasting/univariate/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'moe_128.log 
 done
 
@@ -115,7 +115,7 @@ do
       --ltencoder 'mfca' \
       --lradj 'constant' \
       --pct_start 0.2 \
-      --dps 0.0 0.0 0.0 0.0\
+      --dps 0.0 0.0 0.0 0.0 0.0\
       --itr 1 --batch_size 1024 --learning_rate 0.0001 >logs/LongForecasting/univariate/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'moe.log 
 done
 
@@ -151,6 +151,6 @@ do
       --ltencoder 'mfca' \
       --lradj 'constant' \
       --pct_start 0.2 \
-      --dps 0.0 0.0 0.0 0.0\
+      --dps 0.0 0.0 0.0 0.0 0.0\
       --itr 1 --batch_size 256 --learning_rate 0.0001 >logs/LongForecasting/univariate/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'moe.log 
 done

@@ -16,7 +16,7 @@ from layers.RevIN import RevIN
 from mamba_ssm import Mamba
 from layers.MoE3 import MoE
 from layers.Mamba_EncDec import Encoder, EncoderLayer
-from zeta.nn import FeedForward
+from layers.FeedForward import FeedForward
 
 
 # Cell
