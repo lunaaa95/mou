@@ -15,17 +15,21 @@ We introduce a new versatile model **Mixture of Universals (MoU)** to capture bo
 
 Specifically, MoU is consist of MoF for short-term dependecy modeling and MoA for long-term dependecy modeling. 
 
+MoF is designed to capture divergent context information for better short-term dependency modeling 
 <div align="center">
   <figure>
     <img src="./figs/mof.png" alt="mof">
-  <figcaption>The stucture of MoF to capture divergent context information for better short-term dependency modeling </figcaption>
+  <figcaption>Structure of MoF</figcaption>
   </figure>
 </div>
+
+
+The architecture of MoA is designed to hierarchically model long-term dependencies by progressively expanding its receptive fields. This approach facilitates the formation of a comprehensive representation of long-term dependencies
 
 <div align="center">
   <figure>
     <img src="./figs/moa.png" alt="moa">
-  <figcaption>The architecture of MoA is designed to hierarchically model long-term dependencies by progressively expanding its receptive fields. This approach facilitates the formation of a comprehensive representation of long-term dependencies</figcaption>
+  <figcaption>Structure of MoA</figcaption>
   </figure>
 </div>
 
