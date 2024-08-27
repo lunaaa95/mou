@@ -9,7 +9,7 @@ We introduce a new versatile model **Mixture of Universals (MoU)** to capture bo
 <div align="center">
   <figure>
     <img src="./figs/overview.png" alt="overview">
-  <figcaption>Overview of **MoU**</figcaption>
+  <figcaption>Overview of MoU</figcaption>
   </figure>
 </div>
 
