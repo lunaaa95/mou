@@ -38,7 +38,7 @@ MoU achieves state-of-art performance compared with other baselines in time seri
 <div align="center">
   <figure>
     <img src="https://github.com/lunaaa95/mou/blob/main/figs/result.png" alt="eff">
-  <figcaption>Main result on seven real-world datasets for time series forcasting.</figcaption>
+  <figcaption>Main result on seven real-world datasets for time series forcasting</figcaption>
   </figure>
 </div>
 
