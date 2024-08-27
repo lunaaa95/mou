@@ -1,53 +1,42 @@
 # MoU
-This is the implementation of paper: Mamba or Transformer for Time Series Forecasting? Mixture of Universals (**MoU**) Is All You Need.
+This is the implementation of paper: Mamba or Transformer for Time Series Forecasting? Mixture of Universals (MoU) Is All You Need.
 
 ## Our Paper
-We introduce a new versatile model **Mixture of Universals (MoU)** to capture both short-term and long-term dynamics for enhancing perfomance in time series forecasting. **MoU** is composed of two novel designs: Mixture of Feature Extractors (MoF), an adaptive method designed to improve time series patch representations for short-term dependency, and Mixture of Architectures (MoA), which hierarchically integrates Mamba, FeedForward, Convolution, and Self-Attention architectures in a specialized order to model long-term dependency from a hybrid perspective. The proposed approach achieves state-of-the-art performance while maintaining relatively low computational costs. 
+We introduce a new versatile model **Mixture of Universals (MoU)** to capture both short-term and long-term dynamics for enhancing perfomance in time series forecasting. MoU is composed of two novel designs: Mixture of Feature Extractors (MoF), an adaptive method designed to improve time series patch representations for short-term dependency, and Mixture of Architectures (MoA), which hierarchically integrates Mamba, FeedForward, Convolution, and Self-Attention architectures in a specialized order to model long-term dependency from a hybrid perspective. The proposed approach achieves state-of-the-art performance while maintaining relatively low computational costs. 
 
 ## Model Structure
+The overview of MoU is dispalyed as follows.
 
-<div align="center">
-  <figure>
-    <img src="./figs/overview.png" alt="overview">
-  <figcaption>Overview of MoU</figcaption>
-  </figure>
-</div>
+![fig](figs/overview.png)
+<div style="text-align: center">Overview of MoU</div>
 
-Specifically, **MoU** is consist of MoF for short-term dependecy modeling and MoA for long-term dependecy modeling. 
+
+Specifically, MoU is consist of MoF for short-term dependecy modeling and MoA for long-term dependecy modeling. 
 
 MoF is designed to capture divergent context information for better short-term dependency modeling 
-<div align="center">
-  <figure>
-    <img src="./figs/mof.png" alt="mof">
-  <figcaption>Structure of MoF</figcaption>
-  </figure>
-</div>
+
+![fig](figs/mof.png)
+<div style="text-align: center">Structure of MoF</div>
 
 
 The architecture of MoA is designed to hierarchically model long-term dependencies by progressively expanding its receptive fields. This approach facilitates the formation of a comprehensive representation of long-term dependencies
 
-<div align="center">
-  <figure>
-    <img src="./figs/moa.png" alt="moa">
-  <figcaption>Structure of MoA</figcaption>
-  </figure>
-</div>
+
+![fig](figs/moa.png)
+<div style="text-align: center">Structure of MoA</div>
+
 
 ## Model Efficiency Comparison
-<div align="center">
-  <figure>
-    <img src="./figs/efficiency.png" alt="eff">
-  <figcaption>Model efficiency comparison</figcaption>
-  </figure>
-</div>
+
+![fig](figs/efficiency.png)
+<div style="text-align: center">Model efficiency comparison</div>
 
 ## Main Result
-<div align="center">
-  <figure>
-    <img src="./figs/result.png" alt="eff">
-  <figcaption>Main result on seven real-world datasets for time series forcasting.</figcaption>
-  </figure>
-</div>
+
+
+![fig](figs/result.png)
+<div style="text-align: center">Main result on seven real-world datasets for time series forcasting.</div>
+
 
 ## Preparation
 Install Python 3.8 and necessary dependencies.
@@ -75,5 +64,5 @@ bash scripts/MoU/weather.sh
 
 bash scripts/MoU/electricity.sh
 
-bash scripts//illness.sh
+bash scripts/MoU/illness.sh
 ```
