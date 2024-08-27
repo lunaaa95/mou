@@ -20,7 +20,7 @@ The architecture of MoA is designed to hierarchically model long-term dependenci
 
 <div align="center">
   <figure>
-    <img src="https://github.com/lunaaa95/mou/blob/49854201f5603dfcf3b3436d1648d5ee9cf9c464/figs/moa.png" alt="moa">
+    <img src="https://github.com/lunaaa95/mou/blob/main/figs/moa.png" alt="moa">
   <figcaption>Structure of MoA</figcaption>
   </figure>
 </div>
@@ -28,7 +28,7 @@ The architecture of MoA is designed to hierarchically model long-term dependenci
 ## Model Efficiency Comparison
 <div align="center">
   <figure>
-    <img src="https://github.com/lunaaa95/mou/blob/49854201f5603dfcf3b3436d1648d5ee9cf9c464/figs/efficiency.png" alt="eff">
+    <img src="https://github.com/lunaaa95/mou/blob/main/figs/efficiency.png" alt="eff">
   <figcaption>Model efficiency comparison</figcaption>
   </figure>
 </div>
@@ -36,7 +36,7 @@ The architecture of MoA is designed to hierarchically model long-term dependenci
 ## Main Result
 <div align="center">
   <figure>
-    <img src="https://github.com/lunaaa95/mou/blob/49854201f5603dfcf3b3436d1648d5ee9cf9c464/figs/result.png" alt="eff">
+    <img src="https://github.com/lunaaa95/mou/blob/main/figs/result.png" alt="eff">
   <figcaption>Main result on seven real-world datasets for time series forcasting.</figcaption>
   </figure>
 </div>
