@@ -1,5 +1,5 @@
 # MoU
-This is the implementation of Mixture of Universals (MoU) for time series long-term forecasting.
+This is the implementation of paper: Mamba or Transformer for Time Series Forecasting? Mixture of Universals (MoU) Is All You Need.
 
 # Preparation
 Install Python 3.8 and necessary dependencies
