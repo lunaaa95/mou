@@ -5,30 +5,49 @@ This is the implementation of paper: Mamba or Transformer for Time Series Foreca
 We introduce a new versatile model **Mixture of Universals (MoU)** to capture both short-term and long-term dynamics for enhancing perfomance in time series forecasting. MoU is composed of two novel designs: Mixture of Feature Extractors (MoF), an adaptive method designed to improve time series patch representations for short-term dependency, and Mixture of Architectures (MoA), which hierarchically integrates Mamba, FeedForward, Convolution, and Self-Attention architectures in a specialized order to model long-term dependency from a hybrid perspective. The proposed approach achieves state-of-the-art performance while maintaining relatively low computational costs. 
 
 ## Model Structure
-The overview of MoU is dispalyed as follows:
-![fig](figs/overview.png)
+
+<div align="center">
+  <figure>
+    <img src="https://github.com/lunaaa95/mou/blob/49854201f5603dfcf3b3436d1648d5ee9cf9c464/figs/overview.png" alt="overview">
+  <figcaption>Overview of MoU</figcaption>
+  </figure>
+</div>
 
 Specifically, MoU is consist of MoF for short-term dependecy modeling and MoA for long-term dependecy modeling. 
 
-MoF is designed to capture divergent context information for better short-term dependency modeling. The structure of MoF is dispalyed as follows:
-![fig](figs/mof.png)
+MoF is designed to capture divergent context information for better short-term dependency modeling 
+<div align="center">
+  <figure>
+    <img src="https://github.com/lunaaa95/mou/blob/49854201f5603dfcf3b3436d1648d5ee9cf9c464/figs/mof.png" alt="mof">
+  <figcaption>Structure of MoF</figcaption>
+  </figure>
+</div>
 
 
-The architecture of MoA is designed to hierarchically model long-term dependencies by progressively expanding its receptive fields. This approach facilitates the formation of a comprehensive representation of long-term dependencies. The structure of MoA is dispalyed as follows:
-![fig](figs/moa.png)
+The architecture of MoA is designed to hierarchically model long-term dependencies by progressively expanding its receptive fields. This approach facilitates the formation of a comprehensive representation of long-term dependencies
 
+<div align="center">
+  <figure>
+    <img src="https://github.com/lunaaa95/mou/blob/49854201f5603dfcf3b3436d1648d5ee9cf9c464/figs/moa.png" alt="moa">
+  <figcaption>Structure of MoA</figcaption>
+  </figure>
+</div>
 
 ## Model Efficiency Comparison
-We compare the training time and memory used of MoU with other baseline models. The results are as follows:
-![fig](figs/efficiency.png)
-
+<div align="center">
+  <figure>
+    <img src="https://github.com/lunaaa95/mou/blob/49854201f5603dfcf3b3436d1648d5ee9cf9c464/figs/efficiency.png" alt="eff">
+  <figcaption>Model efficiency comparison</figcaption>
+  </figure>
+</div>
 
 ## Main Result
-
-MoU achieves state-of-art permance in comparision with other baseline models for time series long-term forecasting. The results are shown as follows:
-![fig](figs/result.png)
-
-
+<div align="center">
+  <figure>
+    <img src="https://github.com/lunaaa95/mou/blob/49854201f5603dfcf3b3436d1648d5ee9cf9c464/figs/result.png" alt="eff">
+  <figcaption>Main result on seven real-world datasets for time series forcasting.</figcaption>
+  </figure>
+</div>
 
 ## Preparation
 Install Python 3.8 and necessary dependencies.
