@@ -13,7 +13,7 @@ We introduce a new versatile model **Mixture of Universals (MoU)** to capture bo
   </figure>
 </div>
 
-Specifically, MoU is consist of MoF for short-term dependecy modeling and MoA for long-term dependecy modeling. 
+Specifically, **MoU** is consist of MoF for short-term dependecy modeling and MoA for long-term dependecy modeling. 
 
 MoF is designed to capture divergent context information for better short-term dependency modeling 
 <div align="center">
@@ -75,5 +75,5 @@ bash scripts/MoU/weather.sh
 
 bash scripts/MoU/electricity.sh
 
-bash scripts/MoU/illness.sh
+bash scripts//illness.sh
 ```
