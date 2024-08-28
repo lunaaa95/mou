@@ -1,4 +1,4 @@
-# 📍 MoU
+# MoU
 This is the implementation of paper: Mamba or Transformer for Time Series Forecasting? Mixture of Universals (MoU) Is All You Need.
 
 ## 📍 Our Paper
