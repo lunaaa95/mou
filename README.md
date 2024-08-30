@@ -42,6 +42,7 @@ bash scripts/MoU/illness.sh
 ```
 
 ## 🌟 Citation
+```
 @misc{peng2024mambatransformertimeseries,
       title={Mamba or Transformer for Time Series Forecasting? Mixture of Universals (MoU) Is All You Need}, 
       author={Sijia Peng and Yun Xiong and Yangyong Zhu and Zhiqiang Shen},
@@ -51,3 +52,4 @@ bash scripts/MoU/illness.sh
       primaryClass={cs.LG},
       url={https://arxiv.org/abs/2408.15997}, 
 }
+```
