@@ -57,8 +57,7 @@ name=temp2
         --dps 0.1 0.1 0.1 0.0 0.1\
         --itr 1 --batch_size 512 --learning_rate 0.0001 >logs/LongForecasting/$name/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'$entype'+'$ltencoder.log 
     done
-    # --patch_len 32\
-    # --itr 1 --batch_size 1024 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'$entype'+'$ltencoder.log
+
     for pred_len in 192
     do
         python -u run_longExp.py \
@@ -129,8 +128,6 @@ name=temp2
         --itr 1 --batch_size 512 --learning_rate 0.0001 >logs/LongForecasting/$name/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'$entype'+'$ltencoder.log
     done
 
-    # --itr 1 --batch_size 1024 --learning_rate 0.0001 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len'_'$entype'+'$ltencoder.log
-    # --dps 0.0 0.0 0.0 0.0 0.1\
     for pred_len in 720
     do
         python -u run_longExp.py \

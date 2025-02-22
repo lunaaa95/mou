@@ -1,26 +1,29 @@
-# Mamba or Transformer for Time Series Forecasting? Mixture of Universals (MoU) Is All You Need <br><sub>Official PyTorch Implementation</sub>
-[![arXiv](https://img.shields.io/badge/arXiv%20paper-2408.15997-b31b1b.svg)](https://arxiv.org/abs/2408.15997)&nbsp;
+# Semantics-Aware Patch Encoding and Hierarchical Dependency Modeling for Long-Term Time Series Forecasting <br><sub>Official PyTorch Implementation</sub>
+
 <div align="center">
   <figure>
-    <img src="https://github.com/lunaaa95/mou/blob/main/figs/overview.png" alt="overview">
+    <img src="https://github.com/lunaaa95/mou/blob/main/figs/diff.png" alt="overview">
   <figcaption>Overview of MoU</figcaption>
   </figure>
 </div>
 
 ## 💥 Our Paper
-Our paper has been released on [Arxiv](https://arxiv.org/abs/2408.15997). We introduce a new versatile model **Mixture of Universals (MoU)** to capture both short-term and long-term dynamics for enhancing perfomance in time series forecasting. MoU is composed of two novel designs: Mixture of Feature Extractors (MoF), an adaptive method designed to improve time series patch representations for short-term dependency, and Mixture of Architectures (MoA), which hierarchically integrates Mamba, FeedForward, Convolution, and Self-Attention architectures in a specialized order to model long-term dependency from a hybrid perspective. The proposed approach achieves state-of-the-art performance while maintaining relatively low computational costs. 
+
+We introduce **Mixture of Universals (MoU)**, a novel framework designed to prevent semantic loss during patch encoding and efficiently enhance long-term dynamics through a hybrid approach. Specifically, MoU is consist of two novel designs: Mixture of Feature Extractors (MoF) and Mixture of Architectures (MoA). MoF introduces a semantics-aware encoding mechanism to preserve diverse temporal patterns and mitigating information loss. MoA, on the other hand, hierarchically captures long-term dependency with progressively expanded receptive field, improving model performance while maintaining relatively low computational costs. The proposed approach achieves state-of-the-art performance.
 
 The overall performance of MoU for long-term forecasting is summarized in the following Table (average performance). More detailed results can be found in our paper.
-| Model       | Ours(MoU) |           | ModernTCN |           | PatchTST |          |  DLinear  |        |  S-Mamba  |          |
-|-------------|-----------|-----------|-----------|-----------|----------|----------|-----------|--------|-----------|----------|
-| Metric      | MSE       | MAE       | MSE       | MAE       | MSE      | MAE      | MSE       | MAE    | MSE       | MAE      |
-| ETTh1       | 0.397     | 0.423     | 0.404     | 0.420     | 0.413    | 0.434    | 0.423     | 0.437  | 0.450     | 0.456    |
-| ETTh2       | 0.317     | 0.373     | 0.323     | 0.378     | 0.331    | 0.379    | 0.431     | 0.447  | 0.369     | 0.405    |
-| ETTm1       | 0.348     | 0.382     | 0.354     | 0.381     | 0.352    | 0.382    | 0.357     | 0.379  | 0.366     | 0.396    |
-| ETTm2       | 0.252     | 0.315     | 0.256     | 0.316     | 0.256    | 0.317    | 0.267     | 0.332  | 0.265     | 0.326    |
-| Weather     | 0.221     | 0.262     | 0.224     | 0.267     | 0.225    | 0.264    | 0.240     | 0.300  | 0.236     | 0.273    |
-| illness     | 1.500     | 0.784     | 1.519     | 0.799     | 1.513    | 0.825    | 2.169     | 1.041  | 1.977     | 0.890    |
-| electricity | 0.157     | 0.253     | 0.157     | 0.253     | 0.159    | 0.253    | 0.177     | 0.274  | 0.166     | 0.262    |
+
+| Model       | Ours(MoU) |        | ModernTCN |        | PatchTST |        | HDMixer |       | DLinear |        | S-Mamba |         |
+|--------|--------|--------|--------|--------|--------|--------|--------|-------|--------|--------|--------|--------|
+| Metric      | MSE       | MAE    | MSE       | MAE    | MSE      | MAE    | MSE     | MAE   | MSE     | MAE    | MSE     | MAE     |
+| ETTh1       | 0.397     | 0.423  | 0.404     | 0.420  | 0.413    | 0.434  | 0.408   | 0.426 | 0.423   | 0.437  | 0.450   | 0.456   |
+| ETTh2       | 0.317     | 0.373  | 0.323     | 0.379  | 0.331    | 0.379  | 0.320   | 0.374 | 0.431   | 0.447  | 0.369   | 0.405   |
+| ETTm1       | 0.348     | 0.382  | 0.354     | 0.382  | 0.352    | 0.382  | 0.359   | 0.385 | 0.357   | 0.379  | 0.367   | 0.396   |
+| ETTm2       | 0.252     | 0.315  | 0.256     | 0.316  | 0.256    | 0.317  | 0.257   | 0.316 | 0.267   | 0.332  | 0.265   | 0.326   |
+| Weather     | 0.221     | 0.262  | 0.225     | 0.267  | 0.226    | 0.264  | 0.235   | 0.275 | 0.240   | 0.300  | 0.236   | 0.273   |
+| illness     | 1.500     | 0.784  | 1.519     | 0.799  | 1.513    | 0.825  | 2.019   | 0.891 | 2.169   | 1.041  | 1.977   | 0.890   |
+| electricity | 0.157     | 0.253  | 0.157     | 0.253  | 0.159    | 0.253  | 0.160   | 0.252 | 0.177   | 0.274  | 0.166   | 0.262   |
+
 
 
 ## ⚡️ Preparation
@@ -62,13 +65,5 @@ bash scripts/MoU/illness.sh
 
 ## 🌟 Citation
 ```
-@misc{peng2024mambatransformertimeseries,
-      title={Mamba or Transformer for Time Series Forecasting? Mixture of Universals (MoU) Is All You Need}, 
-      author={Sijia Peng and Yun Xiong and Yangyong Zhu and Zhiqiang Shen},
-      year={2024},
-      eprint={2408.15997},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2408.15997}, 
-}
+
 ```
