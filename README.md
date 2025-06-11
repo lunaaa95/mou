@@ -7,23 +7,26 @@
   </figure>
 </div>
 
-## 💥 Our Paper
+## 💥 Our Paper (Accepted in KDD 2025) 
+[![arXiv](https://img.shields.io/badge/arXiv%20paper-2408.15997-b31b1b.svg)](https://arxiv.org/abs/2408.15997)&nbsp; 
+[![KDD](https://img.shields.io/badge/KDD-doi.org/10.1145/3711896.3737123-blue.svg)](https://doi.org/10.1145/3711896.3737123)&nbsp; 
+![](https://img.shields.io/github/stars/Lunaaa95/MoU?style=social)
+
 
 We introduce **Mixture of Universals (MoU)**, a novel framework designed to prevent semantic loss during patch encoding and efficiently enhance long-term dynamics through a hybrid approach. Specifically, MoU is consist of two novel designs: Mixture of Feature Extractors (MoF) and Mixture of Architectures (MoA). MoF introduces a semantics-aware encoding mechanism to preserve diverse temporal patterns and mitigating information loss. MoA, on the other hand, hierarchically captures long-term dependency with progressively expanded receptive field, improving model performance while maintaining relatively low computational costs. The proposed approach achieves state-of-the-art performance.
 
 The overall performance of MoU for long-term forecasting is summarized in the following Table (average performance). More detailed results can be found in our paper.
 
-| Model       | Ours(MoU) |        | ModernTCN |        | PatchTST |        | HDMixer |       | DLinear |        | S-Mamba |         |
-|--------|--------|--------|--------|--------|--------|--------|--------|-------|--------|--------|--------|--------|
-| Metric      | MSE       | MAE    | MSE       | MAE    | MSE      | MAE    | MSE     | MAE   | MSE     | MAE    | MSE     | MAE     |
-| ETTh1       | 0.397     | 0.423  | 0.404     | 0.420  | 0.413    | 0.434  | 0.408   | 0.426 | 0.423   | 0.437  | 0.450   | 0.456   |
-| ETTh2       | 0.317     | 0.373  | 0.323     | 0.379  | 0.331    | 0.379  | 0.320   | 0.374 | 0.431   | 0.447  | 0.369   | 0.405   |
-| ETTm1       | 0.348     | 0.382  | 0.354     | 0.382  | 0.352    | 0.382  | 0.359   | 0.385 | 0.357   | 0.379  | 0.367   | 0.396   |
-| ETTm2       | 0.252     | 0.315  | 0.256     | 0.316  | 0.256    | 0.317  | 0.257   | 0.316 | 0.267   | 0.332  | 0.265   | 0.326   |
-| Weather     | 0.221     | 0.262  | 0.225     | 0.267  | 0.226    | 0.264  | 0.235   | 0.275 | 0.240   | 0.300  | 0.236   | 0.273   |
-| illness     | 1.500     | 0.784  | 1.519     | 0.799  | 1.513    | 0.825  | 2.019   | 0.891 | 2.169   | 1.041  | 1.977   | 0.890   |
-| electricity | 0.157     | 0.253  | 0.157     | 0.253  | 0.159    | 0.253  | 0.160   | 0.252 | 0.177   | 0.274  | 0.166   | 0.262   |
-
+| Model       | MoU (Ours) |       | ModernTCN |       | PatchTST |       | HDMixer |       | RMLP  |       | DLinear |       | S-Mamba |       | iTransformer |       |
+|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
+| Metric      | MSE          | MAE   | MSE       | MAE   | MSE        | MAE   | MSE     | MAE   | MSE   | MAE   | MSE     | MAE   | MSE     | MAE   | MSE          | MAE   |
+| ETTh1       | 0.397        | 0.423 | 0.404     | 0.420 | 0.413      | 0.434 | 0.408   | 0.426 | 0.442 | 0.443 | 0.423   | 0.437 | 0.450   | 0.456 | 0.465        | 0.465 |
+| ETTh2       | 0.317        | 0.373 | 0.323     | 0.379 | 0.331      | 0.379 | 0.320   | 0.374 | 0.377 | 0.414 | 0.431   | 0.447 | 0.369   | 0.405 | 0.385        | 0.414 |
+| ETTm1       | 0.348        | 0.382 | 0.354     | 0.382 | 0.352      | 0.382 | 0.359   | 0.385 | 0.357 | 0.379 | 0.357   | 0.379 | 0.367   | 0.396 | 0.367        | 0.395 |
+| ETTm2       | 0.252        | 0.315 | 0.256     | 0.316 | 0.256      | 0.317 | 0.257   | 0.316 | 0.263 | 0.318 | 0.267   | 0.332 | 0.265   | 0.326 | 0.271        | 0.329 |
+| Weather     | 0.221        | 0.262 | 0.225     | 0.267 | 0.226      | 0.264 | 0.235   | 0.275 | 0.236 | 0.273 | 0.240   | 0.300 | 0.236   | 0.273 | 0.238        | 0.273 |
+| illness     | 1.500        | 0.784 | 1.519     | 0.799 | 1.513      | 0.825 | 2.019   | 0.891 | 1.593 | 0.843 | 2.169   | 1.041 | 1.977   | 0.890 | 2.222        | 1.012 |
+| electricity | 0.157        | 0.253 | 0.157     | 0.253 | 0.159      | 0.253 | 0.160   | 0.252 | 0.172 | 0.266 | 0.177   | 0.274 | 0.166   | 0.262 | 0.170        | 0.265 |
 
 
 ## ⚡️ Preparation
@@ -64,6 +67,7 @@ bash scripts/MoU/illness.sh
 * We also give two baseline models of `PatchTST` and `DLinear` as well as their runing scripts.
 
 ## 🌟 Citation
+
 ```
 
 ```
