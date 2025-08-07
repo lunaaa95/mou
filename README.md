@@ -69,5 +69,11 @@ bash scripts/MoU/illness.sh
 ## 🌟 Citation
 
 ```
-
+@inproceedings{peng2025semantics,
+  title={Semantics-Aware Patch Encoding and Hierarchical Dependency Modeling for Long-Term Time Series Forecasting},
+  author={Peng, Sijia and Xiong, Yun and Zhu, Yangyong and Shen, Zhiqiang},
+  booktitle={Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining V. 2},
+  pages={2269--2280},
+  year={2025}
+}
 ```
